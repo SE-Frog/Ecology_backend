@@ -1,16 +1,24 @@
 <?php
-  session_start();
-  require_once('../Modules/Search.php');
-  $action =$_REQUEST['act'];
+    session_start();
+    require_once('../Modules/Search.php');
+    $action =$_REQUEST['act'];
 
-  switch ($action) {
-    case 'deleteEcology':
-      $id = (int) $_REQUEST['id'];
-      if ($id > 0) {
-        // // if ($id == $_SESSION['uID']){
-        deleteEcology($id);
-      }
-      break;
-}
+    switch ($action) {
+        case 'createEcology':
+            //檢查是否存在且有值
+            if(isset($_REQUEST['organismname']) && !empty($_REQUEST['organismname'])) {
+                createEcology($_REQUEST['organismname'], $_REQUEST['label'], $_REQUEST['family'], $_REQUEST['genus'], $_REQUEST['food'], $_REQUEST['season'], $_REQUEST['status'], $_REQUEST['habitat'], $_REQUEST['note']);
+            } else {
+                break;
+            }
+        case 'deleteEcology':
+            $id = (int) $_REQUEST['id'];
+            if ($id > 0) {
+                // 做完登入頁面後記得檢查uID
+            // if($id == $_SESSION['uID']){
+                deleteEcology($id);
+            }
+            break;
+    }
 ?>
 <?php header('Location: ../View/SearchView.php'); ?>
