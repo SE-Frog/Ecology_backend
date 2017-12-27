@@ -5,7 +5,7 @@ require("dbconnect.php");
 function getUserList() {
   global $conn;
   // 從資料庫抓取所有user的資料，並依ID順序排列
-	$sql = "select * from userinfo order by id ASC";
+	$sql = "SELECT * FROM `userinfo` ORDER BY id ASC";
 	return mysqli_query($conn, $sql);
 }
 
@@ -14,7 +14,7 @@ function deleteUser($id) {
 	//對$id 做基本檢誤，必須是int值
 	$id = (int) $id;
 	// 從db刪除傳進來id的資料
-	$sql = "delete from userinfo where id=$id;";
+	$sql = "DELETE FROM `userinfo` WHERE id=$id;";
 	return mysqli_query($conn, $sql); //執行SQL
 }
 
@@ -22,7 +22,7 @@ function deleteUser($id) {
 function userDetails($id) {
   global $conn;
   if($id >0 ) {
-    $sql = "select * from userinfo where id=$id;";
+    $sql = "SELECT * FROM userinfo WHERE id=$id;";
     $result=mysqli_query($conn,$sql) or die("DB Error: Cannot retrieve message."); //執行SQL查詢
   } else {
     $result = false;
@@ -38,7 +38,7 @@ function addUser($username='', $password='') {
 		$password=mysqli_real_escape_string($conn, $password);
 		
 		//Generate SQL
-		$sql = "insert into userinfo (username, password) values ('$username', '$password');";
+		$sql = "INSERT INTO userinfo (username, password) VALUES ('$username', '$password');";
 		return mysqli_query($conn, $sql); //執行SQL
   } else {
     return false;
@@ -52,8 +52,8 @@ function updateUser($id, $username, $password) {
 	$id = (int)$id;
 
 	if ($username and $id) { //if title is not empty
-		$sql = "update userinfo set username='$username', password='$password', where id='$id';";
-		mysqli_query($conn, $sql) or die("Insert failed, SQL query error"); //執行SQL
+		$sql = "UPDATE `userinfo` SET username='$username', password='$password', WHERE id='$id';";
+		mysqli_query($conn, $sql) or die("INSERT failed, SQL query error"); //執行SQL
 	}
 }
 ?>
