@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once('../Modules/Search.php');
+    require_once('../Modules/Function.php');
     $action =$_REQUEST['act'];
 
     switch ($action) {
@@ -28,5 +28,5 @@
     }
 ?>
 <?php 
-header('Location: ../View/SearchView.php');
+header('Location: ../Views/SearchView.php');
  ?>

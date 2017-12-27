@@ -3,7 +3,7 @@
 session_start();
 //require("dbconnect.php");
 // require("../Modules/loginModel.php");
-require("../Modules/Search.php");
+require("../Modules/Function.php");
 //set the login mark to empty
 
 
@@ -27,7 +27,7 @@ if ($rs=mysqli_fetch_assoc($result)) {
 ?>
 <b>edit ecology of&nbsp;<?php echo $edit_id;?></b>
 <hr/>
-<form method="post" action="../Control/SearchControl.php?act=updateEcology">
+<form method="post" action="../Control/Control.php?act=updateEcology">
 ID:<input type="text" name="dataid" id="dataid" value="<?php echo $edit_id;?>"/><br/>
 Organ:<input type="text" name="organismname" id="organismname" value="<?php echo $Organ;?>"/><br/>
 Label:<input type="text" name="label" id="label" value="<?php echo $Label;?>"/><br/>
@@ -38,7 +38,7 @@ Season:<input type="text" name="season" id="season" value="<?php echo $Season;?>
 Status:<input type="text" name="status" id="status" value="<?php echo $Status;?>"/><br/>
 Habitat:<input type="text" name="habitat" id="habitat" value="<?php echo $Habitat;?>"/><br/>
 Note:<input type="text" name="note" id="note" value="<?php echo $Note;?>"/><br/>
-<input type="submit" name="Submit" value="送出" />[<a href='../View/SearchView.php'>返回</a>]
+<input type="submit" name="Submit" value="送出" />[<a href='../Views/SearchView.php'>返回</a>]
 	</form>
 <?php   
 ?>

@@ -7,7 +7,7 @@
 <body>
     <?php
         // 引入Seach.php裡面的函式
-        require_once('../Modules/Search.php');
+        require_once('../Modules/Function.php');
         // 將return回來的sql資料存入result中
         $result = getFullList();
 
@@ -29,8 +29,8 @@
             // 逐列進行動作(顯示)
             while($row = mysqli_fetch_array($result)) {
                 // 欄位的值 = $row['{欄位名稱}'], 參考下列範例顯示欄位 id 及 organismname
-                echo $row['id'] . " " . $row['organismname'] . "<a href='../Control/SearchControl.php?act=deleteEcology&id=".$row['id']."'>delete</a><br />".
-                "<a href='../View/SearchView_edit.php?&id=".$row['id']."'>edit</a><br />";
+                echo $row['id'] . " " . $row['organismname'] . "<a href='../Control/Control.php?act=deleteEcology&id=".$row['id']."'>delete</a><br />".
+                "<a href='../Views/SearchView_edit.php?&id=".$row['id']."'>edit</a><br />";
              }
         }
     ?>
