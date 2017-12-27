@@ -110,11 +110,12 @@
 /* DELETE */
     /* 針對ID刪除一筆生態資料 */
     function deleteEcology($id) {
-      global $conn;
-      //對$id 做基本檢誤
-      $id = (int) $id;
-      // 刪除這一筆id的所有資料
-      $sql = "delete from library where id=$id;";
-      return mysqli_query($conn, $sql); //執行SQL
+        global $conn;
+        // 對id做基本檢誤
+        $id = (int)$id;
+        // 刪除這一筆id的所有資料
+        $sql = "DELETE FROM `library` WHERE `id` = $id;";
+        // 執行SQL
+        return mysqli_query($conn, $sql);
     }
 ?>
