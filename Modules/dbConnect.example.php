@@ -1,4 +1,9 @@
 <?php
+    /*
+        這是DB連線範例檔案, 請將檔案名稱改為dbConnect.php
+        並將對應的連線資訊輸入至下方變數中
+    */
+
     //主機IP位置
     $host = 'localhost';
     //使用者名稱(*需與MySQL帳號相同)
