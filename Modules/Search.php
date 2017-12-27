@@ -119,6 +119,27 @@
         }
     }
 /* UPDATE */
+    function updateEcology($Organ, $Label = NULL, $Family = NULL, $Genus = NULL, $Food = NULL, $Season = NULL, $Status = NULL, $Habitat = NULL, $Note = NULL) {
+        global $conn;
+
+        $Organ = mysqli_real_escape_string($conn,$Organ);
+        $Label = mysqli_real_escape_string($conn,$Label);
+        $Family = mysqli_real_escape_string($conn,$Family);
+        $Genus = mysqli_real_escape_string($conn,$Genus);
+        $Food = mysqli_real_escape_string($conn,$Food);
+        $Season = mysqli_real_escape_string($conn,$Season);
+        $Status = mysqli_real_escape_string($conn,$Status);
+        $Habitat = mysqli_real_escape_string($conn,$Habitat);
+        $Note = mysqli_real_escape_string($conn,$Note);
+
+        $id = (int)$id;
+
+        if ($Organ && $id) { //if title is not empty
+            $sql = "update library set Organ='$Organ',Label='$Label',Family='$Family',Genus='$Genus',Food='$Food',Season='$Season',Status='$Status',Habitat='$Habitat',Note='$Note',, where id=$id;";
+            // 執行SQL
+            mysqli_query($conn, $sql) or die("Insert failed, SQL query error");
+      }
+    }
 /* DELETE */
     /* 針對ID刪除一筆生態資料 */
     function deleteEcology($id) {

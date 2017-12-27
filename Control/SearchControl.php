@@ -19,6 +19,12 @@
                 deleteEcology($id);
             }
             break;
+        case 'updateEcology':
+            $id = (int) $_REQUEST['id'];
+            if ($id > 0) {
+                updateEcology($_REQUEST['organismname'], $_REQUEST['label'], $_REQUEST['family'], $_REQUEST['genus'], $_REQUEST['food'], $_REQUEST['season'], $_REQUEST['status'], $_REQUEST['habitat'], $_REQUEST['note']);
+            }
+            break;
     }
 ?>
 <?php header('Location: ../View/SearchView.php'); ?>
