@@ -25,11 +25,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <!-- <li class="active"><a href="#"> <span class="sr-only">(current)</span></a></li> -->
-        <li><a href="myList.php">我的推薦清單</a></li>
+        <li><a href="../Views/index.php">首頁</a></li>
+        <li><a href="../Views/userinfo.php">使用者清單</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       <li><a href='loginForm.php'>
         <?php 
+        session_start();
         if (isset($_SESSION['uID']) && $_SESSION['uID'] == true) {
           echo "登出";
         } else {
