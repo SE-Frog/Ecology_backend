@@ -83,8 +83,28 @@
 
 /* CREATE */
     /* 建立一筆新的生態資料 */
-    function createEcology($Organ, $Label, $Family, $Genus, $Food, $Season, $Status, $habitat, $note) {
+    function createEcology($Organ = '', $Label = NULL, $Family = NULL, $Genus = NULL, $Food = NULL, $Season = NULL, $Status = NULL, $Habitat = NULL, $Note = NULL) {
+        // 宣告使用conn全域變數
+        global $conn;
+        // 判斷名稱是否為空
+        if($Organ == '') {
+            return false;
+        } else {
+            // 過濾字串
+            $Organ = mysqli_real_escape_string($conn, $Organ);
+            $Label = mysqli_real_escape_string($conn, $Label);
+            $Family = mysqli_real_escape_string($conn, $Family);
+            $Genus = mysqli_real_escape_string($conn, $Genus);
+            $Food = mysqli_real_escape_string($conn, $Food);
+            $Season = mysqli_real_escape_string($conn, $Season);
+            $Status = mysqli_real_escape_string($conn, $Status);
+            $Habitat = mysqli_real_escape_string($conn, $Habitat);
+            $Note = mysqli_real_escape_string($conn, $Note);
+            // 新增資料
+            $sql = "INSERT INTO `library` (`organismname`, `label`, `family`, `genus`, `food`, `season`, `status`, `habitat`, `note`) VALUES ('$Organ', '$Label', '$Family', '$Genus', '$Food', '$Season', '$Status', '$Habitat', '$Note')";
 
+            return mysqli_query($conn, $sql);
+        }
     }
 /* UPDATE */
 /* DELETE */
