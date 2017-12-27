@@ -1,8 +1,6 @@
 <?php
-session_start(); 
-//啟用session
-require_once('../Modules/Login.php');
-
+session_start(); //啟用session
+require_once('../Modules/loginModel.php');
 $action =$_REQUEST['act'];
 
 switch ($action) {
