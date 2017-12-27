@@ -13,6 +13,18 @@
         return mysqli_query($conn, $sql);
     }
 
+    /* 獲得指定編號生態資料 */
+    function getListID($id) {
+        // 宣告使用conn全域變數
+        global $conn;
+        // 針對id做基本檢誤
+        $id = (int)$id;
+        // 選取library資料表中所有資料
+        $sql = "SELECT * FROM `library` WHERE id = $id";
+
+        return mysqli_query($conn, $sql);
+    }
+
     /* 獲得指定單頁筆數及特定頁數的生態資訊 (一頁顯示多少筆 及 第幾頁) */
     function getPaginationList($SinglePageRow = 10, $Page = 1) {
         // 宣告使用conn全域變數
