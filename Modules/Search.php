@@ -119,9 +119,10 @@
         }
     }
 /* UPDATE */
-    function updateEcology($Organ, $Label = NULL, $Family = NULL, $Genus = NULL, $Food = NULL, $Season = NULL, $Status = NULL, $Habitat = NULL, $Note = NULL) {
+    function updateEcology($id,$Organ, $Label = NULL, $Family = NULL, $Genus = NULL, $Food = NULL, $Season = NULL, $Status = NULL, $Habitat = NULL, $Note = NULL) {
         global $conn;
-
+        
+        $id = (int)$id;
         $Organ = mysqli_real_escape_string($conn,$Organ);
         $Label = mysqli_real_escape_string($conn,$Label);
         $Family = mysqli_real_escape_string($conn,$Family);
@@ -132,10 +133,10 @@
         $Habitat = mysqli_real_escape_string($conn,$Habitat);
         $Note = mysqli_real_escape_string($conn,$Note);
 
-        $id = (int)$id;
 
         if ($Organ && $id) { //if title is not empty
-            $sql = "update library set Organ='$Organ',Label='$Label',Family='$Family',Genus='$Genus',Food='$Food',Season='$Season',Status='$Status',Habitat='$Habitat',Note='$Note',, where id=$id;";
+          
+            $sql = "UPDATE `library` SET `organismname`='$Organ',`label`='$Label',`family`='$Family',`genus`='$Genus',`food`='$Food',`season`='$Season',`status`='$Status',`habitat`='$Habitat',`note`='$Note' where `id`=$id;";
             // 執行SQL
             mysqli_query($conn, $sql) or die("Insert failed, SQL query error");
       }

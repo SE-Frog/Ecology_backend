@@ -21,6 +21,7 @@
         //$result = getPaginationList(10, 1);
 
         // 判斷是否有資料回傳
+
         if($result->num_rows === 0) {
             // query資料為空
             echo "Empty";
@@ -28,7 +29,8 @@
             // 逐列進行動作(顯示)
             while($row = mysqli_fetch_array($result)) {
                 // 欄位的值 = $row['{欄位名稱}'], 參考下列範例顯示欄位 id 及 organismname
-                echo $row['id'] . " " . $row['organismname'] . "<a href='../Control/SearchControl.php?act=deleteEcology&id=".$row['id']."'>delete</a><br />";
+                echo $row['id'] . " " . $row['organismname'] . "<a href='../Control/SearchControl.php?act=deleteEcology&id=".$row['id']."'>delete</a><br />".
+                "<a href='../View/SearchView_edit.php?&id=".$row['id']."'>edit</a><br />";
              }
         }
     ?>
