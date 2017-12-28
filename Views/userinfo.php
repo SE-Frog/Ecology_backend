@@ -1,12 +1,11 @@
 <?php
   include 'header.php';
-  // require("../Modules/loginModel.php");
-  require("../Modules/userModel.php");
-
   if ( ! isset($_SESSION['uID']) or $_SESSION['uID'] <= 0) {
     header("Location: ../Views/loginForm.php");
     exit(0);
-}
+  }
+  // require("../Modules/loginModel.php");
+  require("../Modules/userModel.php");
 ?>
 <div class = "container">
   <?php
