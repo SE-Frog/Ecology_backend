@@ -1,10 +1,6 @@
 <?php
-include 'header.php';
-
-//require("dbconnect.php");
-
-//set the login mark to empty
-$_SESSION['uID'] = 0;
+  include 'header.php';
+  $_SESSION['uID'] = 0;
 ?>
 <div class="container">
   <h1>Login Form</h1><hr />
@@ -15,3 +11,7 @@ $_SESSION['uID'] = 0;
     <input type="submit">
   </form>
 </div>
+
+<?php
+  include 'footer.php';
+?>
