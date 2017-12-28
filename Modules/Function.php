@@ -121,7 +121,7 @@
 /* UPDATE */
     function updateEcology($id,$Organ, $Label = NULL, $Family = NULL, $Genus = NULL, $Food = NULL, $Season = NULL, $Status = NULL, $Habitat = NULL, $Note = NULL) {
         global $conn;
-        
+
         $id = (int)$id;
         $Organ = mysqli_real_escape_string($conn,$Organ);
         $Label = mysqli_real_escape_string($conn,$Label);
@@ -133,9 +133,9 @@
         $Habitat = mysqli_real_escape_string($conn,$Habitat);
         $Note = mysqli_real_escape_string($conn,$Note);
 
+        // 生物名稱及編號不得為空
+        if (empty($Organ) && empty($id)) {
 
-        if ($Organ && $id) { //if title is not empty
-          
             $sql = "UPDATE `library` SET `organismname`='$Organ',`label`='$Label',`family`='$Family',`genus`='$Genus',`food`='$Food',`season`='$Season',`status`='$Status',`habitat`='$Habitat',`note`='$Note' where `id`=$id;";
             // 執行SQL
             mysqli_query($conn, $sql) or die("Insert failed, SQL query error");
