@@ -6,7 +6,10 @@
   }
 ?>
 <div class="container">
-<h1>登錄成功！</h1>
-<h2>這是主頁</h2>
+  <h1>登錄成功！</h1>
+  <h2>這是主頁</h2>
 </div>
+<?php
+  include 'footer.php';
+?>
 

@@ -7,25 +7,23 @@
 ?>
 
 <head>
-<meta charset="UTF-8" />
-<title>�v�v�լd</title>
-<!-- <link href="mycss.css" rel="stylesheet" type="text/css" /> -->
-<style type="text/css"> 
-table {
-border: 2px solid yellow;
-width:35%;
-}
-th, td{
-border: 2px solid gold;
-font-size:25px;
-font-weight:bold;
-font-family:�з���;
-text-align:right;
-width:50px;
-}
-
-
-</style>
+  <meta charset="UTF-8" />
+  <title>查詢清單</title>
+  <!-- <link href="mycss.css" rel="stylesheet" type="text/css" /> -->
+  <!-- <style type="text/css"> 
+    table {
+      border: 2px solid yellow;
+      width:35%;
+    }
+    th, td{
+      border: 2px solid gold;
+      font-size:25px;
+      font-weight:bold;
+      font-family:Arial;
+      text-align:right;
+      width:50px;
+    }
+  </style> -->
 </head>
 <body>
   <div class="container">

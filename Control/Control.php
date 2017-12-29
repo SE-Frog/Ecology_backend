@@ -6,6 +6,7 @@
     switch ($action) {
         case 'searchEcology':
             searchEcology($_REQUEST['keyword'], $_REQUEST['label'], $_REQUEST['family'], $_REQUEST['genus']);
+            header('Location: ../Views/Result.php');
             break;
         case 'createEcology':
             //檢查是否存在且有值

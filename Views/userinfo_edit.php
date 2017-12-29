@@ -1,14 +1,7 @@
 <?php
   include 'header.php';
-  if ( ! isset($_SESSION['uID']) or $_SESSION['uID'] <= 0) {
-    header("Location: ../Views/loginForm.php");
-    exit(0);
-  }
-  //require("dbconnect.php");
-  // require("../Modules/loginModel.php");
   require("../Modules/userModel.php");
   //set the login mark to empty
-  // if ( ! isset($_SESSION['uID']) or $_SESSION['uID'] <= 0) {
   if ( ! isset($_SESSION['uID'])) {
     header("Location: ../Views/loginForm.php");
     exit(0);

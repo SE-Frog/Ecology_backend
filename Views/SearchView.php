@@ -1,5 +1,6 @@
 <?php 
   include 'header.php';
+  require_once('../Modules/Function.php');
   if ( ! isset($_SESSION['uID']) or $_SESSION['uID'] <= 0) {
     header("Location: ../Views/loginForm.php");
     exit(0);
@@ -8,7 +9,6 @@
 <div class="container">
   <?php
     // 引入Seach.php裡面的函式
-    require_once('../Modules/Function.php');
     // 將return回來的sql資料存入result中
     $result = getFullList();
 
