@@ -8,10 +8,11 @@
     switch ($action) {
         case 'login':
             // 取得從HTML表單傳來之POST參數
-            $userName = $_REQUEST['id'];
-            $passWord = $_REQUEST['pwd'];
+            $userName = $_POST['id'];
+            $passWord = $_POST['pwd'];
+            
             // 比對密碼
-            if ( $id == checkIdentity($userName,$passWord)) {
+            if ( $id = checkIdentity($userName,$passWord)) {
                 //若正確則將userID存在session變數中，作為登入成功之記號，並導回首頁
                 $_SESSION['uID'] = $id;
                 header('Location: ../Views/index.php');

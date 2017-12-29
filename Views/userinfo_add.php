@@ -1,10 +1,9 @@
 <?php
-include 'header.php';
-
-//require("dbconnect.php");
-
-//set the login mark to empty
-$_SESSION['uID'] = 0;
+  include 'header.php';
+  if ( ! isset($_SESSION['uID']) or $_SESSION['uID'] <= 0) {
+    header("Location: ../Views/loginForm.php");
+    exit(0);
+  }
 ?>
 <div class="container">
   <h1>Add User</h1><hr />
@@ -15,3 +14,7 @@ $_SESSION['uID'] = 0;
     <input type="submit">
   </form>
 </div>
+
+<?php
+  include 'footer.php';
+?>
