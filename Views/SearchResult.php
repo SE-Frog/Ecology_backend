@@ -13,6 +13,8 @@
   $label = $_REQUEST['label'];
   $family = $_REQUEST['family'];
   $genus = $_REQUEST['genus'];
+  echo "目前收到的值：<br/>"."<br/>Keyword: ".$keyword."<br/>label: ".$label."<br/>Family:".$family."<br/>Genus:".$genus;
+  echo "<br/><br/><br/><br/><br/>";
     $results=searchEcology($keyword,$label,$family,$genus);
     foreach ($results as $key => $section) {
       foreach ($section as $name => $val) {
