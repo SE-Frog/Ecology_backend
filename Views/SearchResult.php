@@ -14,8 +14,8 @@
   $family = $_REQUEST['family'];
   $genus = $_REQUEST['genus'];
   echo "你輸入的值為："."<br/>Keyword: ".$keyword."<br/>label: ".$label."<br/>Family:".$family."<br/>Genus:".$genus;
-  echo "<br/><hr/><br/>";
-  echo '<hr/><br/><table class="table"><tr>';
+  echo "<br/><hr/><h1>搜尋結果如下：</h1>";
+  echo '<table class="table"><tr>';
     $results=searchEcology($keyword,$label,$family,$genus);
     $count = 0;
     foreach ($results as $key => $section) {
