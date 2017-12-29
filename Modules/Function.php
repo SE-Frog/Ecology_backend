@@ -88,7 +88,7 @@
             $Genus = "%" . mysqli_real_escape_string($conn, $Genus) . "%";
         }
         // 選取並用屬別進行分群
-        $sql = "SELECT * FROM `library` WHERE `label` LIKE '$Label' AND `family` LIKE '$Family' AND `genus` LIKE '$Genus' AND (`organismname` LIKE '$Keyword' OR `food` LIKE '$Keyword' OR `season` LIKE '$Keyword' OR `status` LIKE '$Keyword' OR `habitat` LIKE '$Keyword')";
+        $sql = "SELECT * FROM `library` WHERE `label` LIKE '$Label' AND `family` LIKE '$Family' AND  (`genus` LIKE '$Genus' OR `genus` IS NULL) AND (`organismname` LIKE '$Keyword' OR `food` LIKE '$Keyword' OR `season` LIKE '$Keyword' OR `status` LIKE '$Keyword' OR `habitat` LIKE '$Keyword')";
 
         return mysqli_query($conn, $sql);
     }
