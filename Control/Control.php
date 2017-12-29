@@ -4,6 +4,10 @@
     $action =$_REQUEST['act'];
 
     switch ($action) {
+        case 'searchEcology':
+            searchEcology($_REQUEST['keyword'], $_REQUEST['label'], $_REQUEST['family'], $_REQUEST['genus']);
+            header('Location: ../Views/Result.php');
+            break;
         case 'createEcology':
             //檢查是否存在且有值
             if(isset($_REQUEST['organismname']) && !empty($_REQUEST['organismname'])) {
@@ -28,5 +32,5 @@
     }
 ?>
 <?php
-    header('Location: ../Views/SearchView.php');
+    // header('Location: ../Views/SearchView.php');
  ?>

@@ -6,8 +6,6 @@
   }
   require("../Modules/loginModel.php");
   require("../Modules/Function.php");
-
-
 /* 先針對post進來的id，再以id與資料庫比對，存取資料庫的值到變數中 */
   $id = (int)$_REQUEST['id'];
 
@@ -48,4 +46,5 @@
   </form>
 </div>
 <?php   
+  include 'footer.php';
 ?>

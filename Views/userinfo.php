@@ -4,7 +4,6 @@
     header("Location: ../Views/loginForm.php");
     exit(0);
   }
-  // require("../Modules/loginModel.php");
   require("../Modules/userModel.php");
 ?>
 <div class = "container">
