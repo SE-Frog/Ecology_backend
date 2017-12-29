@@ -4,7 +4,7 @@
     $action =$_REQUEST['act'];
 
     switch ($action) {
-        case 'searchEcolory':
+        case 'searchEcology':
             searchEcology($_REQUEST['keyword'], $_REQUEST['label'], $_REQUEST['family'], $_REQUEST['genus']);
             break;
         case 'createEcology':
