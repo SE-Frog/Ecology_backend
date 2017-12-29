@@ -38,7 +38,7 @@ width:50px;
     
     <tr>
     <td style="text-align:center">關鍵字</td>
-    <td style="text-align:left"><input type="text" name="keyword" placeholder="ex.�����"/></td>
+    <td style="text-align:left"><input type="text" name="keyword" placeholder="ex.請輸入關鍵字"/></td>
     </tr>
     <tr>
     <td style="text-align:center">物種</td>
@@ -51,11 +51,11 @@ width:50px;
     </tr>
     <tr>
     <td style="text-align:center">科別</td>
-    <td style="text-align:left"><input type="text" name="family" placeholder="ex.����"/></td>
+    <td style="text-align:left"><input type="text" name="family" placeholder="ex.科別"/></td>
     </tr>
     <tr>
     <td style="text-align:center">屬</td>
-    <td style="text-align:left"><input type="text" name="genus" placeholder="ex.��������"/></td>
+    <td style="text-align:left"><input type="text" name="genus" placeholder="ex.屬"/></td>
     </tr>
     <tr><th style="text-align:center", colspan="4"><input type="submit" value="Ok" /></tr>
     
