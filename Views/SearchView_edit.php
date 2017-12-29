@@ -4,8 +4,6 @@
     header("Location: ../Views/loginForm.php");
     exit(0);
   }
-  session_start();
-  require("dbconnect.php");
   require("../Modules/loginModel.php");
   require("../Modules/Function.php");
 
