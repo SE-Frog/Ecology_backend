@@ -31,5 +31,5 @@
     }
 ?>
 <?php
-    header('Location: ../Views/SearchView.php');
+    // header('Location: ../Views/SearchView.php');
  ?>
