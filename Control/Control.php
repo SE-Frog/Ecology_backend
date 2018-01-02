@@ -12,6 +12,8 @@
             //檢查是否存在且有值
             if(isset($_REQUEST['organismname']) && !empty($_REQUEST['organismname'])) {
                 createEcology($_REQUEST['organismname'], $_REQUEST['label'], $_REQUEST['family'], $_REQUEST['genus'], $_REQUEST['food'], $_REQUEST['season'], $_REQUEST['status'], $_REQUEST['habitat'], $_REQUEST['note']);
+                header('Location: ../Views/SearchView.php');
+                break;
             } else {
                 break;
             }
@@ -22,12 +24,14 @@
             // if($id == $_SESSION['uID']){
                 deleteEcology($id);
             }
+            header('Location: ../Views/SearchView.php');
             break;
         case 'updateEcology':
             $id = (int) $_REQUEST['dataid'];
             if ($id > 0) {
                 updateEcology($id,$_REQUEST['organismname'], $_REQUEST['label'], $_REQUEST['family'], $_REQUEST['genus'], $_REQUEST['food'], $_REQUEST['season'], $_REQUEST['status'], $_REQUEST['habitat'], $_REQUEST['note']);
             }
+            header('Location: ../Views/SearchView.php');
             break;
     }
 ?>
