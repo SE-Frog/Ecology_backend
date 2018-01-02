@@ -134,7 +134,7 @@
         $Note = mysqli_real_escape_string($conn,$Note);
 
         // 生物名稱及編號不得為空
-        if (empty($Organ) && empty($id)) {
+        if (!empty($Organ) && !empty($id)) {
 
             $sql = "UPDATE `library` SET `organismname`='$Organ',`label`='$Label',`family`='$Family',`genus`='$Genus',`food`='$Food',`season`='$Season',`status`='$Status',`habitat`='$Habitat',`note`='$Note' where `id`=$id;";
             // 執行SQL
