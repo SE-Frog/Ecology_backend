@@ -27,7 +27,7 @@
             header('Location: ../Views/SearchView.php');
             break;
         case 'updateEcology':
-            $id = (int) $_REQUEST['dataid'];
+            $id = (int) $_REQUEST['id'];
             if ($id > 0) {
                 updateEcology($id,$_REQUEST['organismname'], $_REQUEST['label'], $_REQUEST['family'], $_REQUEST['genus'], $_REQUEST['food'], $_REQUEST['season'], $_REQUEST['status'], $_REQUEST['habitat'], $_REQUEST['note']);
             }
