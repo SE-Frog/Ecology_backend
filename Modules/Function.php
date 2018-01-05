@@ -3,6 +3,14 @@
     require_once('dbConnect.php');
 
 /* READ */
+    function getPhotoExif() {
+      // 宣告使用conn全域變數
+      global $conn;
+      // 選取photo資料表中所有資料
+      $sql = "SELECT * FROM `photo`";
+
+      return mysqli_query($conn, $sql);
+    }
     /* 獲取全部生態資料庫資訊 */
     function getFullList() {
         // 宣告使用conn全域變數
