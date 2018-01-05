@@ -7,7 +7,6 @@
 ?>
 
 <head>
-  <meta charset="UTF-8" />
   <title>查詢清單</title>
   <!-- <link href="mycss.css" rel="stylesheet" type="text/css" /> -->
   <!-- <style type="text/css"> 
