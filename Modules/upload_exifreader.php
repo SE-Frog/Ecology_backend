@@ -10,7 +10,6 @@
         return false;
     } else {
         // 過濾字串
-        // $userid = mysqli_real_escape_string($conn, $userid);
         $directory = mysqli_real_escape_string($conn, $directory);
         $path = mysqli_real_escape_string($conn, $path);
         $name = mysqli_real_escape_string($conn, $name);
@@ -19,6 +18,27 @@
         $shootdatetime = mysqli_real_escape_string($conn, $shootdatetime);
         // 新增資料
         $sql = "INSERT INTO `photo` (`directory`, `path`, `name`, `longitude`, `latitude`, `shootdatetime`) VALUES ('$directory', '$path', '$name', '$longitude', '$latitude', '$shootdatetime');";
+        return mysqli_query($conn, $sql);
+    }
+  }
+  function updatePhotoExif($id,$directory='',$path = '', $name = '', $longitude = NULL, $latitude = NULL,  $shootdatetime = NULL) //儲存資料到資料庫
+  {
+    // 宣告使用conn全域變數
+    global $conn;
+    // 判斷名稱或id是否為空
+    if($path == '' || $id == NULL) {
+        return false;
+    } else {
+        // 過濾字串
+        $id = (int)$id;
+        $directory = mysqli_real_escape_string($conn, $directory);
+        $path = mysqli_real_escape_string($conn, $path);
+        $name = mysqli_real_escape_string($conn, $name);
+        $longitude = mysqli_real_escape_string($conn, $longitude);
+        $latitude = mysqli_real_escape_string($conn, $latitude);
+        $shootdatetime = mysqli_real_escape_string($conn, $shootdatetime);
+        // 新增資料
+        $sql = "UPDATE `photo` SET `directory` = '$directory', `path` = '$path', `name` = '$name', `longitude` = '$longitude', `latitude` = '$latitude', `shootdatetime` = '$shootdatetime'  WHERE `id` = '$id'";
         return mysqli_query($conn, $sql);
     }
   }
@@ -53,12 +73,12 @@
     }
   }
   // 計算上傳的資料有多少筆
-  $count = count($_FILES['exif']['name']); 
+  $count = count($_FILES['exif']['name']);
   // echo '<pre>'.var_export($_POST).'</pre>'; //debug用，目前表單內傳送了什麼
   // echo '<pre>'.var_export($_FILES).'</pre>'; //debug用，目前資料陣列內傳送了什麼
   $uptypes=array //上傳文件類型列表
     (
-      'image/jpg',  
+      'image/jpg',
       'image/jpeg',
       'image/png',
       'image/pjpeg'
@@ -79,14 +99,14 @@
         $error = "第".$i."個<font color='red'>沒有上載圖像文件！</font>";
       }
       if($max_file_size < $_FILES['exif']['size'][$i]) //檢查文件大小，如果文件大於maxfiles
-      { 
+      {
   			$error = "第".$i."個<font color='red'>文件太大！</font>";
       }
       if(!in_array($_FILES['exif']['type'][$i], $uptypes)) //檢查文件類型
       {
         $error = "第".$i."個<font color='red'>不支援此類型圖像文件！</font>";
       }
-      
+
       $keyword = $_REQUEST['keyword']; // 從表單撈種類
       if(!file_exists($destination_folder.$keyword)) // 如果未建立這個文件夾，則建立一個
       {
@@ -100,7 +120,7 @@
       // echo "filename".$filename."<br/>";
       $destination = $destination_folder."/".$keyword."/".$_FILES['exif']['name'][$i]; //目的地地址：'檔案文件夾/種類/檔案原始名稱'
       if (file_exists($destination) && $overwrite != true) //如果有同名文件，且overwrite為0
-      {  
+      {
         $error = "<font color='red'>同名文件已經存在了！</a>";
       }
       elseif (file_exists($destination) && $overwrite == true) //如果有同名文件，且overwrite為1
@@ -115,18 +135,6 @@
       {
         $error = "抱歉，檔案上傳過程中出錯了";
       }
-      // else 
-      // {
-      //     $sizeInfo = getimagesize($_FILES['exif']['tmp_name'][$i]);
-      //     if ($sizeInfo[0] > 800 || $sizeInfo[1] > 600)  //圖像大小
-      //     {
-      //         $error = '圖像解析圖必須在800*600內';
-      //     } else 
-      //     {
-      //         move_uploaded_file($_FILES['exif']['tmp_name'][$i], "photos/".$_POST['txtUsername'].".gif"); //移動文件
-      //     }
-      // }
-      
       if ($error == '') {
         if ($overwrite_message == ''){
           echo "<script>alert('您的照片上傳成功！');</script>";
@@ -143,7 +151,7 @@
             $latitude = $results[0],
             $shootdatetime = date('Y-m-d h:i:s',$result_exif['FileDateTime'])
           );
-          
+
           // echo serialize($results);
           // print_r($results);
           // echo "<br/><br/>";
