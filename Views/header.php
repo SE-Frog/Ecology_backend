@@ -30,6 +30,7 @@
         <li><a href="../Views/SearchUI.php">查詢清單</a></li>
         <li><a href="../Views/photoupload.php">上傳圖片</a></li>
         <li><a href="../Views/photoview.php">瀏覽圖庫</a></li>
+        <li><a href="../Views/photoupload_new.php">上傳圖片_物種</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href='loginForm.php'>
