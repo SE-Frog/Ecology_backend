@@ -66,8 +66,8 @@
   $max_file_size=100000000;   //上傳文件大小限制, 單位為BYTE
   $path_parts=pathinfo($_SERVER['PHP_SELF']); //取得當前路徑
   $destination_folder="../Public/"; //上傳文件路徑
-  $link_error = "/1061_SE/Views/photoupload.php";
-  $link_success = "/1061_SE/Views/photoview.php";
+  $link_error = "../Views/photoupload.php";
+  $link_success = "../Views/photoview.php";
   $overwrite = 1;
 
   $error = '';
