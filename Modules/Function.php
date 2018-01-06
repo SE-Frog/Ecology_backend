@@ -28,7 +28,7 @@
         // 針對id做基本檢誤
         $id = (int)$id;
         // 選取library資料表中所有資料
-        $sql = "SELECT * FROM `library` WHERE id = $id";
+        $sql = "SELECT * FROM `library` WHERE `id` = $id";
 
         return mysqli_query($conn, $sql);
     }
