@@ -49,7 +49,6 @@
 		body {
 			padding:0;
 			margin:0;
-			font-size:12px;
 		}
 
 		#wrapper {
