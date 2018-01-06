@@ -10,12 +10,12 @@
         return false;
     } else {
         // 過濾字串
-        $directory = mysqli_real_escape_string($conn, $directory);
-        $path = mysqli_real_escape_string($conn, $path);
-        $name = mysqli_real_escape_string($conn, $name);
-        $longitude = mysqli_real_escape_string($conn, $longitude);
-        $latitude = mysqli_real_escape_string($conn, $latitude);
-        $shootdatetime = mysqli_real_escape_string($conn, $shootdatetime);
+        $directory = htmlspecialchars(mysqli_real_escape_string($conn, $directory));
+        $path = htmlspecialchars(mysqli_real_escape_string($conn, $path));
+        $name = htmlspecialchars(mysqli_real_escape_string($conn, $name));
+        $longitude = htmlspecialchars(mysqli_real_escape_string($conn, $longitude));
+        $latitude = htmlspecialchars(mysqli_real_escape_string($conn, $latitude));
+        $shootdatetime = htmlspecialchars(mysqli_real_escape_string($conn, $shootdatetime));
         // 新增資料
         $sql = "INSERT INTO `photo` (`directory`, `path`, `name`, `longitude`, `latitude`, `shootdatetime`) VALUES ('$directory', '$path', '$name', '$longitude', '$latitude', '$shootdatetime');";
         return mysqli_query($conn, $sql);
@@ -30,9 +30,9 @@
     } else {
         // 過濾字串
         $id = (int)$id;
-        $longitude = mysqli_real_escape_string($conn, $longitude);
-        $latitude = mysqli_real_escape_string($conn, $latitude);
-        $shootdatetime = mysqli_real_escape_string($conn, $shootdatetime);
+        $longitude = htmlspecialchars(mysqli_real_escape_string($conn, $longitude));
+        $latitude = htmlspecialchars(mysqli_real_escape_string($conn, $latitude));
+        $shootdatetime = htmlspecialchars(mysqli_real_escape_string($conn, $shootdatetime));
         // 新增資料
         $sql = "UPDATE `photo` SET `longitude` = '$longitude', `latitude` = '$latitude', `shootdatetime` = '$shootdatetime'  WHERE `id` = '$id'";
         return mysqli_query($conn, $sql);
@@ -48,12 +48,12 @@
     } else {
         // 過濾字串
         $id = (int)$id;
-        $directory = mysqli_real_escape_string($conn, $directory);
-        $path = mysqli_real_escape_string($conn, $path);
-        $name = mysqli_real_escape_string($conn, $name);
-        $longitude = mysqli_real_escape_string($conn, $longitude);
-        $latitude = mysqli_real_escape_string($conn, $latitude);
-        $shootdatetime = mysqli_real_escape_string($conn, $shootdatetime);
+        $directory = htmlspecialchars(mysqli_real_escape_string($conn, $directory));
+        $path = htmlspecialchars(mysqli_real_escape_string($conn, $path));
+        $name = htmlspecialchars(mysqli_real_escape_string($conn, $name));
+        $longitude = htmlspecialchars(mysqli_real_escape_string($conn, $longitude));
+        $latitude = htmlspecialchars(mysqli_real_escape_string($conn, $latitude));
+        $shootdatetime = htmlspecialchars(mysqli_real_escape_string($conn, $shootdatetime));
         // 新增資料
         $sql = "UPDATE `photo` SET `directory` = '$directory', `path` = '$path', `name` = '$name', `longitude` = '$longitude', `latitude` = '$latitude', `shootdatetime` = '$shootdatetime'  WHERE `id` = '$id'";
         return mysqli_query($conn, $sql);
