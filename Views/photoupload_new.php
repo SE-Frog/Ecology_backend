@@ -93,7 +93,7 @@
                 } else {
                   // 逐列進行動作(顯示)
                   while($row = mysqli_fetch_array($result)) {
-                    echo "<option value=\"".$row['id']."\">".$row['organismname']."</option>";
+                    echo "<option value=\"".$row['organismname']."\">".$row['organismname']."</option>";
                   }
                 }
               ?>
