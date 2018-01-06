@@ -21,6 +21,23 @@
         return mysqli_query($conn, $sql);
     }
   }
+  function updateOnlyExif($longitude = NULL, $latitude = NULL, $shootdatetime = NULL) {
+    // 宣告使用conn全域變數
+    global $conn;
+    // 判斷id是否為空
+    if($id == NULL) {
+        return false;
+    } else {
+        // 過濾字串
+        $id = (int)$id;
+        $longitude = mysqli_real_escape_string($conn, $longitude);
+        $latitude = mysqli_real_escape_string($conn, $latitude);
+        $shootdatetime = mysqli_real_escape_string($conn, $shootdatetime);
+        // 新增資料
+        $sql = "UPDATE `photo` SET `longitude` = '$longitude', `latitude` = '$latitude', `shootdatetime` = '$shootdatetime'  WHERE `id` = '$id'";
+        return mysqli_query($conn, $sql);
+    }
+  }
   function updatePhotoExif($id,$directory='',$path = '', $name = '', $longitude = NULL, $latitude = NULL,  $shootdatetime = NULL) //儲存資料到資料庫
   {
     // 宣告使用conn全域變數
