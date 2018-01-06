@@ -78,28 +78,44 @@
 	</script>
 <body>
   <div class="container">
-    <div id="wrapper">
-  		<label for="select1">
-  			請輸入關鍵字:
-  		</label>
-  		<select id="select1" name="select1">
-        <?php
-          $result = getFullList();
-          if($result->num_rows === 0) {
-            echo "Empty";
-          } else {
-            // 逐列進行動作(顯示)
-            while($row = mysqli_fetch_array($result)) {
-              echo "<option value=\"".$row['id']."\">".$row['organismname']."</option>";
-            }
-          }
-        ?>
-  		</select>
-  		<input value="activate selectator" id="activate_selectator1" type="button">
-  		<br>
-  		<br>
-
-  	</div>
+    <form action="../Modules/upload_exifreader.php" enctype="multipart/form-data" method="post" name="upform">
+      <div class="col-12">
+        <div class="form-group">
+          <div id="wrapper">
+        		<label for="select1">
+        			請輸入關鍵字:
+        		</label>
+        		<select id="select1" name="keyword">
+              <?php
+                $result = getFullList();
+                if($result->num_rows === 0) {
+                  echo "Empty";
+                } else {
+                  // 逐列進行動作(顯示)
+                  while($row = mysqli_fetch_array($result)) {
+                    echo "<option value=\"".$row['id']."\">".$row['organismname']."</option>";
+                  }
+                }
+              ?>
+        		</select>
+        		<input value="activate selectator" id="activate_selectator1" type="button">
+        		<br>
+        		<br>
+        	</div>
+          <!-- <label for="uploading">請選擇上傳類別:</label>
+          <select class="form-control" id="uploading" name="keyword">
+            <option value="frog">青蛙</option>
+            <option value="butterfly">蝴蝶</option>
+          </select> -->
+        </div>
+        <div class="form-group" >
+          <!-- <input class="inputbutton" name="keyword" type="text" /> -->
+          <input class="form-control" name="exif[]" type="file" multiple="multiple" placeholder="可選擇多檔案上傳"/>
+          <br/>
+          <input class="btn btn-success" type="submit" value="讀取EXIF" />
+        </div>
+      </div>
+    </form>
   </div>
 	
 
