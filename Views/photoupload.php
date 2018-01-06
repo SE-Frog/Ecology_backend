@@ -32,3 +32,13 @@
 <?php
   include 'footer.php';
 ?>
+
+<?php
+ /* 參考資料
+  * http://www.javascripthive.info/php/php-file-uploading/
+  * https://blog.longwin.com.tw/2009/01/php-get-directory-file-path-dirname-2008/
+  * https://www.inote.tw/php-directory-functions
+  * https://stackoverflow.com/questions/18801056/php-image-upload-function-save-in-a-dir-and-then-return-save-image-url
+  * https://www.moonlol.com/%E4%B8%8A%E5%82%B3%E5%9C%96%E7%89%87exif%E7%9B%B8%E7%89%87-2548.html 
+  */
+?>
