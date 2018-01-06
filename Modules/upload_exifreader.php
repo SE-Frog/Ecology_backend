@@ -136,7 +136,7 @@
         $result_exif = exif_read_data($destination);
         $results = readGPSinfoEXIF($destination);
         createPhotoExif(
-            $directory = $destination_folder,
+            $directory = (end(explode( '/', $destination_folder))),
             $path = $destination,
             $name = $_FILES['exif']['name'][$i],
             $longitude = $results[1],
