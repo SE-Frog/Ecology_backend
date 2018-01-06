@@ -102,11 +102,11 @@
     );
   $max_file_size=100000000;   //上傳文件大小限制, 單位為BYTE
   $path_parts=pathinfo($_SERVER['PHP_SELF']); //取得當前路徑
-  $destination_folder="../Public"; //上傳文件路徑
+  $destination_folder="../Public/"; //上傳文件路徑
+
   $link_error = "../Views/photoupload.php";
   $link_success = "../Views/photoview.php";
   $overwrite = 1;
-
   $error = '';
   // 多筆檔案loop執行
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -154,9 +154,9 @@
       }
       if ($error == '') {
         if ($overwrite_message == ''){
-          echo "<script>alert('您的照片上傳成功！');</script>";
+          // echo "<script>alert('您的照片上傳成功！');</script>";
         } else {
-          echo "<script>alert('".$overwrite_message."');</script>";
+          // echo "<script>alert('".$overwrite_message."');</script>";
         }
         $result_exif = exif_read_data($destination);
         $results = readGPSinfoEXIF($destination);
@@ -175,10 +175,11 @@
           // $result2 = serialize(exif_read_data($destination));
           // print_r($result_exif);
           // print_r($result);
-          echo '<script language="javascript">'.'window.location.href="'.$link_success.'";'.'</script>';
+          // echo '<script language="javascript">'.'window.location.href="'.$link_success.'";'.'</script>';
       } else {
+        echo $error;
           echo "<script>alert('".$error."');</script>";
-          echo '<script language="javascript">'.'window.location.href="'.$link_error.'";'.'</script>';
+          // echo '<script language="javascript">'.'window.location.href="'.$link_error.'";'.'</script>';
       }
     }
   }
