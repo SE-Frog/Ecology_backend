@@ -1,6 +1,11 @@
 <?php
+  // 啟動Session 並回收uID
+  session_start();
+  unset($_SESSION['uID']);
+  // 避免Session 重複使用, 回收後關閉Session
+  session_destroy();
+  // 在header裡面會重新開啟
   include 'header.php';
-  $_SESSION['uID'] = 0;
 ?>
 <div class="container">
   <h1>Login Form</h1><hr />
