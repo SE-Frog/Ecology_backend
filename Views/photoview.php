@@ -52,7 +52,7 @@
 		}
 
 		#wrapper {
-			width:960px;
+			width:100%;
 			margin:50px auto;
 			min-height:400px;
 		}
@@ -71,14 +71,17 @@
 			margin:0 0 0 10px;
 			float:left;
 		}
-		</style>
+	</style>
 
     
-    <div id="wrapper">
-      <?php
-      require('../Modules/Function.php');
-  		$result=getPhotoExif();
-      while (	$rs=mysqli_fetch_array($result)) {
+  <div class="container">
+    
+<?php
+  require('../Modules/Function.php');
+	$result=getPhotoExif();
+  while (	$rs=mysqli_fetch_array($result)) {
+    echo "<div class=\"row\">";
+      echo "<div id=\"wrapper\">";
         echo " <div id=image>";
           echo " <div id=backder>";
           echo " <a href=".$rs['path']." target='_blank'><img src=\"".$rs['path']."\" id=\"img\" exif=\"true\" width=".(500)." height=".(500);
@@ -86,19 +89,20 @@
           echo " </div>";
         echo " </div>";
         echo " <div id=imageMeta>";
-        echo " <div class=exif-data>";
-          echo " <b>圖片名稱：".$rs['name']."</b><br/><br/>";
-          echo " <b>圖片路徑：".$rs['path']."</b><br/><br/>",
-  						  "<b>經度：</b>".$rs['longitude']."<br><br>",
-  						  "<b>緯度：</b>".$rs['latitude']."<br><br>",
-  						  "<b>拍攝日期：".$rs['shootdatetime']."</b>";
+          echo " <div class=exif-data>";
+            echo " <b>圖片名稱：".$rs['name']."</b><br/><br/>";
+            echo " <b>圖片路徑：".$rs['path']."</b><br/><br/>",
+    						  "<b>經度：</b>".$rs['longitude']."<br><br>",
+    						  "<b>緯度：</b>".$rs['latitude']."<br><br>",
+    						  "<b>拍攝日期：".$rs['shootdatetime']."</b>";
           echo " </div>";
         echo " <br>";
         echo " </div>";
-      }
-		?>
-    </div>
-    
+      echo "</div>";
+    echo "</div>";
+  }
+?>
+  </div>
 <?php
   include 'footer.php';
 ?>
