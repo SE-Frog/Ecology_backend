@@ -1,7 +1,7 @@
 <?php
   error_reporting(0);
   require_once('dbConnect.php');
-  function createPhotoExif($userid = '', $recordid = '', $path = '', $name = '', $longitude = NULL, $latitude = NULL,  $shootdatetime = NULL) //儲存資料到資料庫
+  function createPhotoExif($directory='',$path = '', $name = '', $longitude = NULL, $latitude = NULL,  $shootdatetime = NULL) //儲存資料到資料庫
   {
     // 宣告使用conn全域變數
     global $conn;
@@ -10,15 +10,15 @@
         return false;
     } else {
         // 過濾字串
-        $userid = mysqli_real_escape_string($conn, $userid);
-        $recordid = mysqli_real_escape_string($conn, $recordid);
+        // $userid = mysqli_real_escape_string($conn, $userid);
+        $directory = mysqli_real_escape_string($conn, $directory);
         $path = mysqli_real_escape_string($conn, $path);
         $name = mysqli_real_escape_string($conn, $name);
         $longitude = mysqli_real_escape_string($conn, $longitude);
         $latitude = mysqli_real_escape_string($conn, $latitude);
         $shootdatetime = mysqli_real_escape_string($conn, $shootdatetime);
         // 新增資料
-        $sql = "INSERT INTO `photo` (`userid`, `recordid`, `path`, `name`, `longitude`, `latitude`, `shootdatetime`) VALUES ('$userid', '$recordid', '$path', '$name', '$longitude', '$latitude', '$shootdatetime');";
+        $sql = "INSERT INTO `photo` (`directory`, `path`, `name`, `longitude`, `latitude`, `shootdatetime`) VALUES ('$directory', '$path', '$name', '$longitude', '$latitude', '$shootdatetime');";
         return mysqli_query($conn, $sql);
     }
   }
@@ -137,8 +137,9 @@
         $result_exif = exif_read_data($destination);
 
         createPhotoExif(
-            $userid ='0',
-            $recordid = '0',
+            // $userid ='0',
+            // $recordid = '0',
+            $directory = $destination_folder,
             $path = $destination,
             $name = $result_exif['FileName'],
             $longitude = $results[1],
