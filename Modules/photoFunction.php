@@ -42,7 +42,7 @@
         // 針對id做基本檢誤
         $id = (int)$id;
         // 選取photo資料表指定編號生態照片資訊
-        $sql = "SELECT * FROM `photo` WHERE `id` = $id";
+        $sql = "SELECT * FROM `photo` WHERE `id` = '$id'";
 
         return mysqli_query($conn, $sql);
     }
@@ -54,7 +54,7 @@
         // 字串過濾
         $directory = mysqli_real_escape_string($conn, $directory);
         // 選取photo資料表中所有照片資訊
-        $sql = "SELECT * FROM `photo` WHERE `directory` = $directory";
+        $sql = "SELECT * FROM `photo` WHERE `directory` = '$directory'";
 
         return mysqli_query($conn, $sql);
     }
