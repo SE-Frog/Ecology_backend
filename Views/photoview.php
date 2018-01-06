@@ -77,8 +77,13 @@
   <div class="container">
     
 <?php
-  require('../Modules/Function.php');
-	$result=getPhotoExif();
+  // require('../Modules/Function.php');
+  require('../Modules/photoFunction.php');
+  // $test = "艾氏樹蛙";
+  // $result=getFullPhoto();
+  $result=randOne();
+  // $result=randSpecialOne("馬達加斯加彩蛙");
+	// $result=getPhotoDirectory("馬達加斯加彩蛙");
   while (	$rs=mysqli_fetch_array($result)) {
     echo "<div class=\"row\">";
       echo "<div id=\"wrapper\">";
@@ -90,6 +95,7 @@
         echo " </div>";
         echo " <div id=imageMeta>";
           echo " <div class=exif-data>";
+          echo " <b>圖片名稱：".$rs['directory']."</b><br/><br/>";
             echo " <b>圖片名稱：".$rs['name']."</b><br/><br/>";
             echo " <b>圖片路徑：".$rs['path']."</b><br/><br/>",
     						  "<b>經度：</b>".$rs['longitude']."<br><br>",
