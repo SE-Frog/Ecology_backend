@@ -95,6 +95,7 @@
         echo " </div>";
         echo " <div id=imageMeta>";
           echo " <div class=exif-data>";
+          echo " <b>圖片名稱：".$rs['id']."</b><a href='photoedit.php?id=".$rs['id']."'>編輯</a><br/><br/>";
           echo " <b>圖片名稱：".$rs['directory']."</b><br/><br/>";
             echo " <b>圖片名稱：".$rs['name']."</b><br/><br/>";
             echo " <b>圖片路徑：".$rs['path']."</b><br/><br/>",

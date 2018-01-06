@@ -40,6 +40,7 @@
   }
   function updatePhotoExif($id,$directory='',$path = '', $name = '', $longitude = NULL, $latitude = NULL,  $shootdatetime = NULL) //儲存資料到資料庫
   {
+    // $overwrite = 1;
     // 宣告使用conn全域變數
     global $conn;
     // 判斷名稱或id是否為空
@@ -106,7 +107,7 @@
 
   $link_error = "../Views/photoupload.php";
   $link_success = "../Views/photoview.php";
-  $overwrite = 1;
+  $overwrite = 0;
   $error = '';
   // 多筆檔案loop執行
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
