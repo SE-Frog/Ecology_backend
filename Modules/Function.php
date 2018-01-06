@@ -21,6 +21,16 @@
         return mysqli_query($conn, $sql);
     }
 
+    /* 獲取全部生態資料庫資訊 */
+    function getFullListByLabel($label) {
+      // 宣告使用conn全域變數
+      global $conn;
+      // 選取library資料表中所有資料對應label的
+      $sql = "SELECT * FROM `library` WHERE `label` = '$label'";
+
+      return mysqli_query($conn, $sql);
+    }
+
     /* 獲得指定編號生態資料 */
     function getListID($id) {
         // 宣告使用conn全域變數
