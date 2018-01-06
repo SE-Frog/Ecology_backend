@@ -65,7 +65,7 @@
     );
   $max_file_size=100000000;   //上傳文件大小限制, 單位為BYTE
   $path_parts=pathinfo($_SERVER['PHP_SELF']); //取得當前路徑
-  $destination_folder="../Public/"; //上傳文件路徑
+  $destination_folder="../Public"; //上傳文件路徑
   $link_error = "../Views/photoupload.php";
   $link_success = "../Views/photoview.php";
   $overwrite = 1;
@@ -133,15 +133,12 @@
         } else {
           echo "<script>alert('".$overwrite_message."');</script>";
         }
-        $results = readGPSinfoEXIF($destination);
         $result_exif = exif_read_data($destination);
-
+        $results = readGPSinfoEXIF($destination);
         createPhotoExif(
-            // $userid ='0',
-            // $recordid = '0',
             $directory = $destination_folder,
             $path = $destination,
-            $name = $result_exif['FileName'],
+            $name = $_FILES['exif']['name'][$i],
             $longitude = $results[1],
             $latitude = $results[0],
             $shootdatetime = date('Y-m-d h:i:s',$result_exif['FileDateTime'])
