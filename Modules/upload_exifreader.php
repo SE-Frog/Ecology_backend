@@ -155,9 +155,9 @@
       }
       if ($error == '') {
         if ($overwrite_message == ''){
-          // echo "<script>alert('您的照片上傳成功！');</script>";
+          echo "<script>alert('您的照片上傳成功！');</script>";
         } else {
-          // echo "<script>alert('".$overwrite_message."');</script>";
+          echo "<script>alert('".$overwrite_message."');</script>";
         }
         $result_exif = exif_read_data($destination);
         $results = readGPSinfoEXIF($destination);
@@ -177,11 +177,11 @@
           // $result2 = serialize(exif_read_data($destination));
           // print_r($result_exif);
           // print_r($result);
-          // echo '<script language="javascript">'.'window.location.href="'.$link_success.'";'.'</script>';
+          echo '<script language="javascript">'.'window.location.href="'.$link_success.'";'.'</script>';
       } else {
         echo $error;
           echo "<script>alert('".$error."');</script>";
-          // echo '<script language="javascript">'.'window.location.href="'.$link_error.'";'.'</script>';
+          echo '<script language="javascript">'.'window.location.href="'.$link_error.'";'.'</script>';
       }
     }
   }

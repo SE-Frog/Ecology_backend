@@ -80,8 +80,8 @@
   // require('../Modules/Function.php');
   require('../Modules/photoFunction.php');
   // $test = "艾氏樹蛙";
-  // $result=getFullPhoto();
-  $result=randOne();
+  $result=getFullPhoto();
+  // $result=randOne();
   // $result=randSpecialOne("馬達加斯加彩蛙");
 	// $result=getPhotoDirectory("馬達加斯加彩蛙");
   while (	$rs=mysqli_fetch_array($result)) {
