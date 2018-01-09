@@ -80,9 +80,29 @@
             $name = "%" . mysqli_real_escape_string($conn, $name) . "%";
         }
         $sql = "SELECT * FROM `photo` WHERE (`directory` LIKE '$directory' OR `directory` IS NULL) AND `name` LIKE '$name'";
+
+        return mysqli_query($conn, $sql);
     }
 /* Update */
-    // Using upload_exifreader.php
+    // 相片相關請至Upload查詢
+    function updateOnlyEXIF($id, $longitude = NULL, $latitude = NULL, $shootdatetime = NULL) {
+        // 宣告使用conn全域變數
+        global $conn;
+        // 判斷id是否為空
+        if($id == NULL) {
+            return false;
+        } else {
+            // 過濾字串
+            $id = (int)$id;
+            $longitude = htmlspecialchars(mysqli_real_escape_string($conn, $longitude));
+            $latitude = htmlspecialchars(mysqli_real_escape_string($conn, $latitude));
+            $shootdatetime = htmlspecialchars(mysqli_real_escape_string($conn, $shootdatetime));
+            // 新增資料
+            $sql = "UPDATE `photo` SET `longitude` = '$longitude', `latitude` = '$latitude', `shootdatetime` = '$shootdatetime'  WHERE `id` = '$id'";
+
+            return mysqli_query($conn, $sql);
+        }
+    }
 /* Delete */
     function deletePhotoData($id) {
         // 宣告使用conn全域變數

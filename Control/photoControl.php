@@ -1,17 +1,17 @@
 <?php
-    session_start();
-    // require_once('../Modules/photoFunction.php');
-    require_once('../Modules/upload_exifreader.php');
-    $action =$_REQUEST['act'];
+    /**
+     * 表單接收頁面
+     */
 
-    switch ($action) {
-        case 'updatePhoto':
-            $id = (int) $_REQUEST['photoid'];
-            if ($id > 0) {
-              updatePhotoExif($id,$_REQUEST['directory'], $_REQUEST['path'],$_REQUEST['name'], $_REQUEST['longitude'], $_REQUEST['latitude'], $_REQUEST['shootdatetime']);
-            }
-            // echo "id".$id,"<br/>directory".$_REQUEST['directory']."<br/>path".$_REQUEST['path']."<br/>name".$_REQUEST['name']."<br/>longtitude". $_REQUEST['longitude']."<br/>latitude".$_REQUEST['latitude']."<br/>shootdatetime".$_REQUEST['shootdatetime'];
-            header('Location: ../Views/photoview.php');
-            break;
-    }
+    // 網頁編碼宣告（防止產生亂碼）
+    header('content-type:text/html;charset=utf-8');
+    // 封裝好的單一及多檔案上傳 class
+    include_once '../Modules/Upload.php';
+    $directory = $_REQUEST['directory'];
+    // 更新檔案請改為 Upload($directory, true, $id); 更新時只能用單一張照片
+    $upload = new Upload($directory);
+    $upload->callUploadFile();
+
+    echo $upload->getDestination();  // 取得實際儲存檔名路徑
+
 ?>
