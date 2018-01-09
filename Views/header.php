@@ -28,7 +28,8 @@
         <li><a href="../Views/userinfo.php">使用者清單</a></li>
         <li><a href="../Views/SearchView.php">查看資料庫</a></li>
         <li><a href="../Views/SearchUI.php">查詢清單</a></li>
-        <li><a href="../Views/photoupload.php">上傳圖片</a></li>
+        <!-- <li><a href="../Views/photoupload.php">上傳圖片</a></li> -->
+        <li><a href="../Views/new_upload_example.php">上傳圖片</a></li>
         <li><a href="../Views/photoview.php">瀏覽圖庫</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
