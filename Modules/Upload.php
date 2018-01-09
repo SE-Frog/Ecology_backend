@@ -403,8 +403,12 @@ class Upload
             $directory = htmlspecialchars(mysqli_real_escape_string($this->db, $directory));
             $path = htmlspecialchars(mysqli_real_escape_string($this->db, $path));
             $name = htmlspecialchars(mysqli_real_escape_string($this->db, $name));
-            $longitude = htmlspecialchars(mysqli_real_escape_string($this->db, $longitude));
-            $latitude = htmlspecialchars(mysqli_real_escape_string($this->db, $latitude));
+            if($longitude != NULL) {
+                $longitude = htmlspecialchars(mysqli_real_escape_string($this->db, $longitude));
+            }
+            if($latitude != NULL) {
+                $latitude = htmlspecialchars(mysqli_real_escape_string($this->db, $latitude));
+            }
             $shootdatetime = htmlspecialchars(mysqli_real_escape_string($this->db, $shootdatetime));
             // 新增資料
             $sql = "INSERT INTO `photo` (`directory`, `path`, `name`, `longitude`, `latitude`, `shootdatetime`) VALUES ('$directory', '$path', '$name','$longitude', '$latitude', '$shootdatetime')";
@@ -430,8 +434,12 @@ class Upload
             $directory = htmlspecialchars(mysqli_real_escape_string($this->db, $directory));
             $path = htmlspecialchars(mysqli_real_escape_string($this->db, $path));
             $name = htmlspecialchars(mysqli_real_escape_string($this->db, $name));
-            $longitude = htmlspecialchars(mysqli_real_escape_string($this->db, $longitude));
-            $latitude = htmlspecialchars(mysqli_real_escape_string($this->db, $latitude));
+            if($longitude != NULL) {
+                $longitude = htmlspecialchars(mysqli_real_escape_string($this->db, $longitude));
+            }
+            if($latitude != NULL) {
+                $latitude = htmlspecialchars(mysqli_real_escape_string($this->db, $latitude));
+            }
             $shootdatetime = htmlspecialchars(mysqli_real_escape_string($this->db, $shootdatetime));
             // 新增資料
             $sql = "UPDATE `photo` SET `directory` = '$directory', `path` = '$path', `name` = '$name', `longitude` = '$longitude', `latitude` = '$latitude', `shootdatetime` = '$shootdatetime'  WHERE `id` = '$id'";
