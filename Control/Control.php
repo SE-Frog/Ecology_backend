@@ -5,7 +5,8 @@
 
     switch ($action) {
         case 'searchEcology':
-            searchEcology($_REQUEST['keyword'], $_REQUEST['label'], $_REQUEST['family'], $_REQUEST['genus']);
+            // addslashes 防SQL注入
+            searchEcology(addslashes($_REQUEST['keyword']), addslashes($_REQUEST['label']), addslashes($_REQUEST['family']), addslashes($_REQUEST['genus']));
             header('Location: ../Views/Result.php');
             break;
         case 'createEcology':
