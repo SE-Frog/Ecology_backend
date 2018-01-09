@@ -377,7 +377,11 @@ class Upload
     private function checkUploadPath()
     {
         if (!file_exists($this->uploadPath)) {
-            mkdir($this->uploadPath, 0777, true);
+          $str = $this->uploadPath;
+          $str = mb_convert_encoding($str, "utf-8", "auto");
+          mkdir($str, 0777, true);
+          // mkdir($this->uploadPath, 0777, true); //如有問題，請註解以上3行，解除註解這行
+          
         }
     }
 
