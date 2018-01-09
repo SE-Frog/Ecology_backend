@@ -234,11 +234,12 @@ class Upload
             } else {
                 $this->res['succ'] = $file['name'] . '檔案上傳成功';
                 $this->res['dest'] = $destination;
+                $result = $this->readGPSinfoEXIF($destination);
                 if($this->uploadType == false) {
                     $temp = $this->directory;
-                    $this->createPhotoEXIF($temp, $destination, $file['name']);
+                    $this->createPhotoEXIF($temp, $destination, $file['name'], $result[0], $result[1], $result[2]);
                 } else {
-                    $this->updatePhotoEXIF($this->id, $this->directory, $destination);
+                    $this->updatePhotoEXIF($this->id, $this->directory, $destination, $result[0], $result[1], $result[2]);
                 }
             }
         }
@@ -414,8 +415,6 @@ class Upload
             $sql = "INSERT INTO `photo` (`directory`, `path`, `name`, `longitude`, `latitude`, `shootdatetime`) VALUES ('$directory', '$path', '$name','$longitude', '$latitude', '$shootdatetime')";
 
             mysqli_query($this->db, $sql);
-
-            $this->db = NULL;
         }
     }
 
@@ -445,8 +444,41 @@ class Upload
             $sql = "UPDATE `photo` SET `directory` = '$directory', `path` = '$path', `name` = '$name', `longitude` = '$longitude', `latitude` = '$latitude', `shootdatetime` = '$shootdatetime'  WHERE `id` = '$id'";
 
             mysqli_query($this->db, $sql);
+        }
+    }
 
-            $this->db = NULL;
+    /**
+     * 讀取exif
+     *
+     * @return array
+     */
+    private function readGPSinfoEXIF($imageFile) {
+        if (!in_array(exif_imagetype($imageFile), array(IMAGETYPE_JPEG, IMAGETYPE_TIFF_II, IMAGETYPE_TIFF_MM))) {
+            return array(NULL, NULL, NULL);
+        }
+        $exif = exif_read_data($imageFile, 0, true);
+        /* 如果圖檔無法讀取exif，或exif內沒有GPS經緯度 */
+        if(!$exif || empty($exif['GPS'])) {
+            return array(NULL, NULL, NULL);
+        } else {
+            $lat_ref = $exif['GPS']['GPSLatitudeRef'];
+            $lat = $exif['GPS']['GPSLatitude'];
+            list($num, $dec) = explode('/', $lat[0]);
+            $lat_s = $num / $dec;
+            list($num, $dec) = explode('/', $lat[1]);
+            $lat_m = $num / $dec;
+            list($num, $dec) = explode('/', $lat[2]);
+            $lat_v = $num / $dec;
+            $lon_ref = $exif['GPS']['GPSLongitudeRef'];
+            $lon = $exif['GPS']['GPSLongitude'];
+            list($num, $dec) = explode('/', $lon[0]);
+            $lon_s = $num / $dec;
+            list($num, $dec) = explode('/', $lon[1]);
+            $lon_m = $num / $dec;
+            list($num, $dec) = explode('/', $lon[2]);
+            $lon_v = $num / $dec;
+            $gps_int = array($lon_s+ $lon_m / 60.0 + $lon_v / 3600.0, $lat_s + $lat_m / 60.0 + $lat_v / 3600.0, $exif['FILE']['FileDateTime']);
+            return $gps_int;
         }
     }
 
