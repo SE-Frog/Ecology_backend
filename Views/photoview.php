@@ -89,7 +89,12 @@
       echo "<div id=\"wrapper\">";
         echo " <div id=image>";
           echo " <div id=backder>";
-          echo " <a href=".$rs['path']." target='_blank'><img src=\"".$rs['path']."\" id=\"img\" exif=\"true\" width=".(500)." height=".(500);
+          echo " <a href='";
+          echo $rs['path'];
+          echo "' target='_blank'>";
+          echo "<img src=\"";
+          echo $rs['path'];
+          echo "\" id=\"img\" exif=\"true\" width=".(500)." height=".(500);
           echo " title=\"信息:\r文件名:".$rs['name']."\r上傳時間:".$rs['createtime']."\" border='0'></a>";
           echo " </div>";
         echo " </div>";
