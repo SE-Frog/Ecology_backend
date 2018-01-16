@@ -115,3 +115,10 @@
         return mysqli_query($conn, $sql);
     }
 ?>
+
+
+<?php
+  /*
+   * PHP 檔案上傳、多檔案上傳：http://www.smalljacky.com/programming-language/php/php-uploads/
+   */
+?>
