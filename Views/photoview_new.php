@@ -1,4 +1,7 @@
 <?php
+  /*
+   * 实现多选和搜索过滤功能的jQuery下拉列表框插件：http://www.htmleaf.com/jQuery/Form/201604073310.html 
+   */
   include 'header.php';
   if ( ! isset($_SESSION['uID']) or $_SESSION['uID'] <= 0) {
     header("Location: ../Views/loginForm.php");
